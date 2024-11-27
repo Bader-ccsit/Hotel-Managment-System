@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- External CSS (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/table.css') }}" rel="stylesheet">
+    <title>Make a Reservation</title>
+
+
+
+    <style>
+
+        .head{
+            padding-bottom: 0%;
+        }
+
+
+        #wrapper{
+            text-align: center;
+            margin-top: 0%;
+            padding-top: 0%;
+        }
+
+        #left_side, #middle_side ,#right_side{
+            display: inline-block;
+            margin: 5%;
+            border: black solid 2px;
+        }
+
+        #left_side, #right_side{
+            background-color: #cfcfcf;
+            padding: 1.5%;
+            margin-top: 0%;
+            margin-bottom: 0%;
+            bottom: 200px;
+            position: relative;
+            width: 270px;
+            height: 60px;
+            height:max-content;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="head">
+        <img id="logo" src="/static/images/Big_logo.png" alt="hotel_logo">
+        <h1>Make a Reservation</h1>
+        <h5>Easy, Quick and efficient</h5>
+    </div>
+    
+    <div id="wrapper">
+
+        <span id="left_side">
+            
+            <h4 id="side_header">Go Home</h4>
+            <button id="returnbtn" onclick="location.href='/'">Click me</button>
+        </span>
+
+        <span id="middle_side">
+            <form method="POST">
+                <label>Name:</label>
+                <input type="text" name="name" required><br>
+                <label>Room:</label>
+                <select name="room_id" required>
+                    {% for room in rooms %}
+                    <option value="{{ room[0] }}">{{ room[1] }} - ${{ room[2] }}</option>
+                    {% endfor %}
+                </select><br>
+                <label>Number of Guests:</label>
+                <input type="number" name="guests" required><br>
+                <label>Start Date:</label>
+                <input type="date" name="start_date" required><br>
+                <label>End Date:</label>
+                <input type="date" name="end_date" required><br>
+                <button type="submit">Submit</button>
+            </form>
+        </span>
+        
+
+        <span id="right_side">
+            <h4 id="side_header">Our Hotel Selection</h4>
+            <button id="returnbtn" onclick="location.href='/rooms'">Click me</button>
+        </span>
+    </div>
+    
+    
+    
+</body>
+</html>

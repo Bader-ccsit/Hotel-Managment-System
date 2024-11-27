@@ -1,0 +1,59 @@
+form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0%;
+    }
+
+    form label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    form input[type="text"], form input[type="number"], form input[type="date"], form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        background-color: #fff;
+        transition: border-color 0.3s ease;
+    }
+
+    form input[type="text"]:focus, form input[type="number"]:focus, form input[type="date"]:focus, form select:focus {
+        border-color: #007BFF;
+        outline: none;
+    }
+
+    form button, button {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #0056b3;
+    }
+
+    form button:active {
+        background-color: #004080;
+    }
+
+    #returnbtn{
+        display: inline-block;
+        width: fit-content;
+    }
