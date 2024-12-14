@@ -9,68 +9,55 @@
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
     <title>Rooms</title>
-
     <style>
-         
-         #room_table_1{
+         #room_table_1 {
             width: 97%;
             margin-top: 5%;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
          }
-         #room_table_1 td{
+         #room_table_1 td {
             padding: 0%;
             margin: 0%;
             border: 2px solid black;
             width: 0%;
             text-align: center;
          }
-         #room_table_2{
+         #room_table_2 {
             margin-top: 2%;
             margin-left: auto;
             margin-right: auto;
          }
-         #room_table_2 th, #room_table_2 td{
+         #room_table_2 th, #room_table_2 td {
             padding: 4%;
             border: 2px solid black;
          }
-         .table_img{
+         .table_img {
             width: 100%;
             height: 100%;
          }
-         
 
-
-
-
-
-
-
-         #wrapper{
+         #wrapper {
             text-align: center;
             margin-top: 0%;
             padding-top: 0%;
         }
 
-        #left_side, #middle_side ,#right_side{
+        #left_side, #middle_side ,#right_side {
             display: inline-block;
             margin: 5%;
             border: black solid 2px;
         }
 
-        #left_side, #right_side{
+        #left_side, #right_side {
             background-color: #cfcfcf;
             padding: 1.5%;
             margin-top: 0%;
             margin-bottom: 0%;
-            
             width: 270px;
-            height: 60px;
-            height:max-content;
+            height: max-content;
         }
-
-
     </style>
 </head>
 <body>
@@ -79,180 +66,142 @@
         <h1>Available Rooms</h1>
         <h5>Dive through our wide selection of Rooms</h5>
     </div>
-    
-    <!-- <ul>
-        {% for room in rooms %}
-        <li>{{ room[1] }} Room - ${{ room[2] }} per night</li>
-        {% endfor %}
-    </ul> -->
 
-    
-
-    <div style="text-align: center;"> 
+    <div style="text-align: center;">
         <table id="room_table_1">
             <thead>
-              <tr>
-                <th>Room Type</th>
-                <th>Room Type</th>
-                <th>Room Type</th>
-              </tr>
+                <tr>
+                    <th>Room Type</th>
+                    <th>Room Type</th>
+                    <th>Room Type</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                    <div class="slideshow-container">
-
-                        <div class="mySlides fade">
-                          <div class="numbertext">1 / 3</div>
-                          <img src="../static/images/single_room.jpg" style="width:100%">
-                          <div class="text">Single Room</div>
-                        </div>
-                        
-                        <div class="mySlides fade">
-                          <div class="numbertext">2 / 3</div>
-                          <img src="../static/images/single_room2.jpg" style="width:100%">
-                          <div class="text">Single Room</div>
-                        </div>
-                        
-                        <div class="mySlides fade">
-                          <div class="numbertext">3 / 3</div>
-                          <img src="../static/images/single_room3.jpg" style="width:100%">
-                          <div class="text">Single Room</div>
-                        </div>
-                        
-                    </div>
-                        <br>
-                        
-                        <div style="text-align:center">
-                          <span class="dot"></span> 
-                          <span class="dot"></span> 
-                          <span class="dot"></span> 
-                        </div>
-                </td>
-                <td>
-                    <div class="slideshow-container">
-
-                        <div class="mySlides fade">
-                          <div class="numbertext">1 / 3</div>
-                          <img src="../static/images/double_room.jpg" style="width:100%">
-                          <div class="text">Double Room</div>
-                        </div>
-                        
-                        <div class="mySlides fade">
-                          <div class="numbertext">2 / 3</div>
-                          <img src="../static/images/double_room2.jpg" style="width:100%">
-                          <div class="text">Double Room</div>
-                        </div>
-                        
-                        <div class="mySlides fade">
-                          <div class="numbertext">3 / 3</div>
-                          <img src="../static/images/double_room3.jfif" style="width:100%">
-                          <div class="text">Double Room</div>
-                        </div>
-                        
+                <tr>
+                    <td>
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="../static/images/single_room.jpg" style="width:100%">
+                                <div class="text">Single Room</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="../static/images/single_room2.jpg" style="width:100%">
+                                <div class="text">Single Room</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="../static/images/single_room3.jpg" style="width:100%">
+                                <div class="text">Single Room</div>
+                            </div>
                         </div>
                         <br>
-                        
                         <div style="text-align:center">
-                          <span class="dot"></span> 
-                          <span class="dot"></span> 
-                          <span class="dot"></span> 
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
                         </div>
-                </td>
-                <td>
-                    <div class="slideshow-container">
-
-                        <div class="mySlides fade">
-                          <div class="numbertext">1 / 3</div>
-                          <img src="../static/images/suit_room.jpg" style="width:100%">
-                          <div class="text">Suit Room</div>
+                    </td>
+                    <td>
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="../static/images/double_room.jpg" style="width:100%">
+                                <div class="text">Double Room</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="../static/images/double_room2.jpg" style="width:100%">
+                                <div class="text">Double Room</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="../static/images/double_room3.jfif" style="width:100%">
+                                <div class="text">Double Room</div>
+                            </div>
                         </div>
-                        
-                        <div class="mySlides fade">
-                          <div class="numbertext">2 / 3</div>
-                          <img src="../static/images/suit2.jfif" style="width:100%">
-                          <div class="text">Suit Room</div>
-                        </div>
-                        
-                        <div class="mySlides fade">
-                          <div class="numbertext">3 / 3</div>
-                          <img src="../static/images/suit3.jfif" style="width:100%">
-                          <div class="text">Suit Room</div>
-                        </div>
-                        
-                    </div>
                         <br>
-                        
                         <div style="text-align:center">
-                          <span class="dot"></span> 
-                          <span class="dot"></span> 
-                          <span class="dot"></span> 
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
                         </div>
-                </td>
-              </tr>
+                    </td>
+                    <td>
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="../static/images/suit_room.jpg" style="width:100%">
+                                <div class="text">Suit Room</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="../static/images/suit2.jfif" style="width:100%">
+                                <div class="text">Suit Room</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="../static/images/suit3.jfif" style="width:100%">
+                                <div class="text">Suit Room</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div style="text-align:center">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
-          </table>
-          
-          
+        </table>
     </div>
     <div>
-        <table id="room_table_2"> 
-            <thead> 
+        <h4 style="text-align: center; margin-top: 20px;">Available Rooms</h4>
+        <table id="room_table_2">
+            <thead>
                 <tr>
-                    <th>Room Type</th> {% for room in rooms %} 
-                    <th>{{ room[1] }} Room</th> {% endfor %} 
-                </tr> 
+                    <th>Room Type</th>
+                    {% for room in rooms %}
+                    <th>{{ room[1] }} Room</th>
+                    {% endfor %}
+                </tr>
             </thead>
-             <tbody>
-                 <tr>
-                     <td>Price per Night</td> {% for room in rooms %} 
-                     <td>${{ room[2] }}</td> {% endfor %} 
-                 </tr> 
-            </tbody> 
+            <tbody>
+                <tr>
+                    <td>Price per Night</td>
+                    {% for room in rooms %}
+                    <td>${{ room[2] }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
         </table>
     </div>
     <a href="/">Back to Home</a>
 
-
-
-
-
     <script>
-      // Function to initialize slideshows
-      function showSlides() {
-        // Get all <td> elements that contain slideshow containers
-        let containers = document.querySelectorAll("#room_table_1 td");
-    
-        containers.forEach((td) => {
-          let slides = td.querySelectorAll(".mySlides");
-          let dots = td.querySelectorAll(".dot");
-          let currentIndex = td.getAttribute("data-slide-index") || 0; // Get current index from td or default to 0
-          currentIndex = parseInt(currentIndex);
-    
-          // Hide all slides in the current container
-          slides.forEach((slide) => (slide.style.display = "none"));
-          dots.forEach((dot) => dot.classList.remove("active"));
-    
-          // Increment the slide index
-          currentIndex = (currentIndex + 1) % slides.length;
-    
-          // Show the current slide and activate the corresponding dot
-          slides[currentIndex].style.display = "block";
-          dots[currentIndex].classList.add("active");
-    
-          // Store the updated index back into the td element
-          td.setAttribute("data-slide-index", currentIndex);
-        });
-    
-        // Synchronize slide change for all containers every 2 seconds
-        setTimeout(showSlides, 2500);
-      }
-    
-      // Start the slideshow
-      showSlides();
+        function showSlides() {
+            let containers = document.querySelectorAll("#room_table_1 td");
+
+            containers.forEach((td) => {
+                let slides = td.querySelectorAll('.mySlides');
+                let dots = td.querySelectorAll('.dot');
+                let slideIndex = 0;
+
+                function slideShow() {
+                    for (let i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) {
+                        slideIndex = 1;
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots.forEach((dot, i) => {
+                        dot.classList.remove('active');
+                        if (i === slideIndex - 1) {
+                            dot.classList.add('active');
+                        }
+                    });
+                    setTimeout(slideShow, 2000); // Change image every 2 seconds
+                }
+                slideShow();
+            });
+        }
+
+        showSlides();
     </script>
-    
-    
-    
 </body>
 </html>

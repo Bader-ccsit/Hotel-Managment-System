@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form method="POST">
+        <label>First Name:</label>
+        <input type="text" name="first_name" required><br>
+        <label>Last Name:</label>
+        <input type="text" name="last_name" required><br>
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phone_number" required><br>
+        <label>Nationality:</label>
+        <input type="text" name="nationality" required><br>
+        <label>Username:</label>
+        <input type="text" name="username" required><br>
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+        
+
+        <label for="security_question">Security Question:</label>
+        <select id="security_question" name="security_question" required>
+            <option value="">Select a security question</option>
+            <option value="What is your favorite color?">What is your favorite color?</option>
+            <option value="What is your first teacher's name?">What is your first teacher's name?</option>
+            <option value="What is your favorite hobby?">What is your favorite hobby?</option>
+            <option value="What is your favorite year?">What is your favorite year?</option>
+            <option value="Who is your favorite friend's name?">Who is your favorite friend's name?</option>
+        </select><br>
+
+    <label for="security_answer">Your Answer:</label>
+    <input type="text" id="security_answer" name="security_answer" required><br>
+
+    <button type="submit">Sign Up</button>
+    </form>
+
+    <br><br>
+    <a href="/"><button>Home</button></a>
+</body>
+</html>

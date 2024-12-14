@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Booking Name</th>
+                <th>Room ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.reservation_id }}</td>
+                <td>{{ booking.booking_name }}</td>
+                <td>{{ booking.room_id }}</td>
+                <td>{{ booking.start_date }}</td>
+                <td>{{ booking.end_date }}</td>
+                <td>{{ booking.username }}</td>
+                <td>{{ booking.email }}</td>
+                <td>
+                    <a href="{{ url_for('view_user_details', user_id=booking.user_id) }}">View User Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/"><button>Home</button></a>
+    
+</body>
+</html>

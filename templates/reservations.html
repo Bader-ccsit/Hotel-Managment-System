@@ -8,58 +8,31 @@
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
     <title>Reservations</title>
-
-
-
     <style>
         table {
-            width: 100%;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 18px;
-            text-align: left;
         }
-
-        table thead tr {
-            background-color: #007BFF;
-            color: white;
+        th, td {
+            padding: 12px;
             text-align: left;
-            font-weight: bold;
-        }
-
-        table th, table td {
-            padding: 12px 15px;
             border: 1px solid #ddd;
         }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f3f3f3;
+        th {
+            background-color: #f2f2f2;
         }
-
-        table tbody tr:hover {
-            background-color: #f1f1f1;
-            cursor: pointer;
-        }
-
-        table a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        table a:hover {
-            text-decoration: underline;
-        }
-
-        
     </style>
 </head>
 <body>
     <div class="head">
         <img id="logo" src="/static/images/Big_logo.png" alt="hotel_logo">
-        <h1>Reservations</h1>
-        <h5>Check out who is abord</h5>
+        <h1>All Reservations</h1>
+        <h5>Manage your current reservations</h5>
     </div>
-    
+
     <table>
         <thead>
             <tr>
@@ -72,22 +45,24 @@
             </tr>
         </thead>
         <tbody>
-            {% for res in reservations %}
+            {% for reservation in reservations %}
             <tr>
-                <td>{{ res[1] }}</td>
-                <td>{{ res[2] }}</td>
-                <td>{{ res[3] }}</td>
-                <td>{{ res[4] }}</td>
-                <td>{{ res[5] }}</td>
+                <td>{{ reservation[1] }}</td>
+                <td>{{ reservation[2] }}</td>
+                <td>{{ reservation[3] }}</td>
+                <td>{{ reservation[4] }}</td>
+                <td>{{ reservation[5] }}</td>
                 <td>
-                    <a href="/edit_reservation/{{ res[0] }}">Edit</a> |
-                    <a href="/cancel_reservation/{{ res[0] }}">Cancel</a>
+                    <a href="/edit_reservation/{{ reservation[0] }}">Edit</a> |
+                    <a href="/cancel_reservation/{{ reservation[0] }}">Cancel</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    
-    <button id="returnbtn" onclick="location.href='/'">Return Home</button>
+
+    <div style="text-align:center; margin-top: 20px;">
+        <a href="/">Back to Home</a>
+    </div>
 </body>
 </html>

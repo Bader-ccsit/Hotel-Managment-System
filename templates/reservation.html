@@ -9,29 +9,24 @@
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/table.css') }}" rel="stylesheet">
     <title>Make a Reservation</title>
-
-
-
     <style>
-
-        .head{
+        .head {
             padding-bottom: 0%;
         }
 
-
-        #wrapper{
+        #wrapper {
             text-align: center;
             margin-top: 0%;
             padding-top: 0%;
         }
 
-        #left_side, #middle_side ,#right_side{
+        #left_side, #middle_side ,#right_side {
             display: inline-block;
             margin: 5%;
             border: black solid 2px;
         }
 
-        #left_side, #right_side{
+        #left_side, #right_side {
             background-color: #cfcfcf;
             padding: 1.5%;
             margin-top: 0%;
@@ -39,11 +34,8 @@
             bottom: 200px;
             position: relative;
             width: 270px;
-            height: 60px;
-            height:max-content;
+            height: max-content;
         }
-
-        
     </style>
 </head>
 <body>
@@ -52,11 +44,22 @@
         <h1>Make a Reservation</h1>
         <h5>Easy, Quick and efficient</h5>
     </div>
-    
-    <div id="wrapper">
 
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-warning">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div id="wrapper">
         <span id="left_side">
-            
             <h4 id="side_header">Go Home</h4>
             <button id="returnbtn" onclick="location.href='/'">Click me</button>
         </span>
@@ -64,31 +67,29 @@
         <span id="middle_side">
             <form method="POST">
                 <label>Name:</label>
-                <input type="text" name="name" required><br>
+                <input type="text" name="name" class="form-control" required><br>
                 <label>Room:</label>
-                <select name="room_id" required>
+                <select name="room_id" class="form-control" required>
                     {% for room in rooms %}
                     <option value="{{ room[0] }}">{{ room[1] }} - ${{ room[2] }}</option>
                     {% endfor %}
                 </select><br>
                 <label>Number of Guests:</label>
-                <input type="number" name="guests" required><br>
+                <input type="number" name="guests" class="form-control" required><br>
                 <label>Start Date:</label>
-                <input type="date" name="start_date" required><br>
+                <input type="date" name="start_date" class="form-control" required><br>
                 <label>End Date:</label>
-                <input type="date" name="end_date" required><br>
-                <button type="submit">Submit</button>
+                <input type="date" name="end_date" class="form-control" required><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            
         </span>
-        
 
         <span id="right_side">
             <h4 id="side_header">Our Hotel Selection</h4>
             <button id="returnbtn" onclick="location.href='/rooms'">Click me</button>
         </span>
     </div>
-    
-    
-    
 </body>
+
 </html>
