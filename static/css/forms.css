@@ -1,0 +1,48 @@
+
+        .head {
+            padding-bottom: 0%;
+        }
+
+        #wrapper {
+            text-align: center;
+            margin-top: 0%;
+            padding-top: 0%;
+        }
+
+        #middle_side{
+            padding: 2%;
+            background-color: #cfcfcf;
+            text-align: center;
+            
+        }
+
+        #left_side, #middle_side ,#right_side {
+            display: inline-block;
+            margin: 3%;
+            border: black solid 2px;
+        }
+
+        
+        #left_side, #right_side {
+            background-color: #cfcfcf;
+            padding: 1.5%;
+            margin-top: 0%;
+            margin-bottom: 0%;
+            bottom: 200px;
+            position: relative;
+            width: 270px;
+            height: max-content;
+        }
+
+        form {
+            display: flex; 
+            flex-direction: column; 
+            width: 300px; 
+            margin: auto; 
+        } 
+        label { 
+            margin-top: 10px; 
+        } 
+        input {
+             margin-bottom: 10px;
+        } 

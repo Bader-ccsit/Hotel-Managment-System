@@ -147,33 +147,45 @@ def edit_reservation(reservation_id):
         end_date = request.form["end_date"]
 
         if int(guests) <= 0 or start_date >= end_date:
-            return "Invalid reservation details, please try again!"
+            flash("Invalid reservation details, please try again!")
+            return redirect(url_for("edit_reservation", reservation_id=reservation_id))
 
-        # Fetch the old room ID before updating
-        cursor.execute("SELECT room_id FROM reservations WHERE id = %s", (reservation_id,))
-        old_room_id = cursor.fetchone()[0]
+        # Check for overlapping reservations for the new room
+        cursor.execute("""
+            SELECT * FROM reservations 
+            WHERE room_id = %s 
+              AND id != %s
+              AND (start_date < %s AND end_date > %s)
+        """, (room_id, reservation_id, end_date, start_date))
+        overlapping_reservations = cursor.fetchall()
 
+        if overlapping_reservations:
+            flash("Room is already reserved for the selected dates. Please choose a different room or date range.")
+            return redirect(url_for("edit_reservation", reservation_id=reservation_id))
+
+        # Update the reservation details
         cursor.execute("""
             UPDATE reservations 
             SET name = %s, room_id = %s, guests = %s, start_date = %s, end_date = %s 
             WHERE id = %s
         """, (name, room_id, guests, start_date, end_date, reservation_id))
 
-        # Update room availability
-        if old_room_id != room_id:
-            cursor.execute("UPDATE rooms SET availability = TRUE WHERE id = %s", (old_room_id,))
-            cursor.execute("UPDATE rooms SET availability = FALSE WHERE id = %s", (room_id,))
-
         conn.commit()
         conn.close()
+        flash("Reservation updated successfully!")
         return redirect(url_for("view_reservations"))
 
+    # Fetch the current reservation details
     cursor.execute("SELECT * FROM reservations WHERE id = %s", (reservation_id,))
     reservation = cursor.fetchone()
-    cursor.execute("SELECT * FROM rooms WHERE availability = TRUE OR id = %s", (reservation[2],))
+
+    # Fetch all rooms
+    cursor.execute("SELECT id, type, price FROM rooms")
     rooms = cursor.fetchall()
     conn.close()
+
     return render_template("edit_reservation.html", reservation=reservation, rooms=rooms)
+
 
 
 
@@ -185,15 +197,23 @@ def cancel_reservation(reservation_id):
         return "Database connection error", 500
     cursor = conn.cursor()
 
-    # Fetch the room ID before deleting the reservation
+    # Check if the reservation exists before attempting to delete it
     cursor.execute("SELECT room_id FROM reservations WHERE id = %s", (reservation_id,))
-    room_id = cursor.fetchone()[0]
+    reservation = cursor.fetchone()
 
+    if not reservation:
+        conn.close()
+        flash("Reservation not found.")
+        return redirect(url_for("view_reservations"))
+
+    # Delete the reservation
     cursor.execute("DELETE FROM reservations WHERE id = %s", (reservation_id,))
-    cursor.execute("UPDATE rooms SET availability = TRUE WHERE id = %s", (room_id,))
     conn.commit()
     conn.close()
+
+    flash("Reservation canceled successfully!")
     return redirect(url_for("view_reservations"))
+
 
 
 

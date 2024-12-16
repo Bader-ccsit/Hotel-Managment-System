@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- External CSS (Bootstrap) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/forms.css') }}" rel="stylesheet">
     <title>Edit Reservation</title>
+
+    <style>
+        #left_side, #right_side{
+            top: 200px;
+        }
+    </style>
+    
 </head>
+
+
 <body>
     <div class="head">
         <img id="logo" src="/static/images/Big_logo.png" alt="hotel_logo">
@@ -16,28 +24,57 @@
         <h5>Make changes to your existing reservation</h5>
     </div>
 
-    <div style="text-align:center; margin-top: 20px;">
-        <form method="POST">
-            <label>Name:</label>
-            <input type="text" name="name" value="{{ reservation[1] }}" required><br>
-            <label>Room:</label>
-            <select name="room_id" required>
-                {% for room in rooms %}
-                <option value="{{ room[0] }}" {% if room[0] == reservation[2] %} selected {% endif %}>{{ room[1] }} - ${{ room[2] }}</option>
-                {% endfor %}
-            </select><br>
-            <label>Number of Guests:</label>
-            <input type="number" name="guests" value="{{ reservation[3] }}" required><br>
-            <label>Start Date:</label>
-            <input type="date" name="start_date" value="{{ reservation[4] }}" required><br>
-            <label>End Date:</label>
-            <input type="date" name="end_date" value="{{ reservation[5] }}" required><br>
-            <button type="submit">Save Changes</button>
-        </form>
+
+    <div>
+        <ul class="navbar">
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/reservations">View Reservations</a></li>
+            <li><a href="/reserve">Make a Reservation</a></li>
+        </ul>
     </div>
 
-    <div style="text-align:center; margin-top: 20px;">
-        <a href="/">Back to Home</a>
+
+    <h1 id="main_header">Edit Your Booking</h1>
+    <div id="wrapper">
+
+
+        <span id="left_side">
+            <h4 id="side_header">Go Home</h4>
+            <button id="returnbtn" onclick="location.href='/'">Click me</button>
+        </span>
+
+
+
+        <span  id="middle_side" style="text-align:center; margin-top: 20px;">
+            <form method="POST">
+                <label>Name:</label>
+                <input type="text" name="name" value="{{ reservation[1] }}" required><br>
+                <label>Room:</label>
+                <select name="room_id" required>
+                    {% for room in rooms %}
+                    <option value="{{ room[0] }}" {% if room[0] == reservation[2] %} selected {% endif %}>{{ room[1] }} - ${{ room[2] }}</option>
+                    {% endfor %}
+                </select><br>
+                <label>Number of Guests:</label>
+                <input type="number" name="guests" value="{{ reservation[3] }}" required min="1" max="5"><br>
+                <label>Start Date:</label>
+                <input type="date" name="start_date" value="{{ reservation[4] }}" required><br>
+                <label>End Date:</label>
+                <input type="date" name="end_date" value="{{ reservation[5] }}" required><br>
+                <button type="submit">Save Changes</button>
+            </form>
+        </span>
+
+
+        <span id="right_side">
+            <h4 id="side_header">Our Hotel Selection</h4>
+            <button id="returnbtn" onclick="location.href='/rooms'">Click me</button>
+        </span>
     </div>
+    
+
+    
+
+    
 </body>
 </html>

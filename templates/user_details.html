@@ -4,15 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/forms.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    
+    <style>
+        body{
+            text-align: center;
+            
+        }
+        h1{
+            margin-top: 2%;
+        }
+        table{
+            margin-right: auto;
+            margin-left: auto;
+            border: black solid 2px;
+            margin-top: 2%;
+            padding: 5%;
+            width: 30%;
+            
+        }
+        thead, tbody, td{
+            padding: 1%;
+            border: solid black 1px;
+        }
+        a button{
+            margin-top: 1%;
+        }
+    </style>
 </head>
 <body>
+
+    <div class="head">
+        <img id="logo" src="/static/images/Big_logo.png" alt="hotel_logo">
+        <h1>Welcome to Hotel Reservation System</h1>
+        <h5>For our Advance Software Course</h5>
+        
+    </div>
+
     <h1>User Details</h1>
-    <p><strong>First Name:</strong> {{ user.first_name }}</p>
-    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
-    <p><strong>Nationality:</strong> {{ user.nationality }}</p>
-    <p><strong>Username:</strong> {{ user.username }}</p>
-    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    <table>
+        <tbody>
+            
+            <tr><td><p><strong>First Name:</strong> {{ user.first_name }}</p></td></tr>
+            <tr><td><p><strong>Last Name:</strong> {{ user.last_name }}</p></td></tr>
+            <tr><td><p><strong>Email:</strong> {{ user.email }}</p></td></tr>
+            <tr><td><p><strong>Phone Number:</strong> {{ user.phone_number }}</p></td></tr>
+            <tr><td><p><strong>Nationality:</strong> {{ user.nationality }}</p></td></tr>
+            <tr><td><p><strong>Username:</strong> {{ user.username }}</p></td></tr>
+        </tbody>
+        
+    </table>
+    
+    <a href="{{ url_for('admin_dashboard') }}"><button>Back to Dashboard</button></a>
 </body>
 </html>

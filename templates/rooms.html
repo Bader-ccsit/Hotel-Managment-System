@@ -10,9 +10,12 @@
     <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
     <title>Rooms</title>
     <style>
+
+
+
          #room_table_1 {
             width: 97%;
-            margin-top: 5%;
+            margin-top: 2%;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -65,6 +68,14 @@
       <img id="logo" src="/static/images/Big_logo.png" alt="hotel_logo">
         <h1>Available Rooms</h1>
         <h5>Dive through our wide selection of Rooms</h5>
+    </div>
+
+    <div>
+        <ul class="navbar">
+            <li><a href="/">Back Home</a></li>
+            <li><a href="/reservations">View Reservations</a></li>
+            <li><a href="/reserve">Make a Reservation</a></li>
+        </ul>
     </div>
 
     <div style="text-align: center;">
@@ -148,7 +159,7 @@
             </tbody>
         </table>
     </div>
-    <div>
+    <div style="margin-bottom: 1%;">
         <h4 style="text-align: center; margin-top: 20px;">Available Rooms</h4>
         <table id="room_table_2">
             <thead>
@@ -169,7 +180,7 @@
             </tbody>
         </table>
     </div>
-    <a href="/">Back to Home</a>
+    
 
     <script>
         function showSlides() {
