@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import flash
+from datetime import date
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
@@ -48,6 +49,8 @@ def view_rooms():
 
 
 
+
+
 @app.route("/reserve", methods=["GET", "POST"])
 def reserve():
     if not session.get("user_id"):
@@ -64,6 +67,11 @@ def reserve():
         guests = request.form["guests"]
         start_date = request.form["start_date"]
         end_date = request.form["end_date"]
+
+        # Check if start_date is a past date
+        if start_date < date.today().strftime('%Y-%m-%d'):
+            flash("Start date cannot be in the past!")
+            return redirect(url_for("reserve"))
 
         # Validate input
         if int(guests) <= 0 or start_date >= end_date:
@@ -93,17 +101,14 @@ def reserve():
         return redirect(url_for("view_reservations"))
 
     # Fetch all rooms
-    # cursor.execute("""
-    #     SELECT * FROM rooms
-    #     WHERE id NOT IN (
-    #         SELECT room_id FROM reservations 
-    #         WHERE start_date < NOW() AND end_date > NOW()
-    #     )
-    # """)
     cursor.execute("SELECT id, type, price FROM rooms")
     rooms = cursor.fetchall()
     conn.close()
-    return render_template("reservation.html", rooms=rooms)
+
+    # Pass the current date to the template
+    current_date = date.today().strftime('%Y-%m-%d')
+    return render_template("reservation.html", rooms=rooms, current_date=current_date)
+
 
 
 
@@ -276,7 +281,7 @@ def signin():
             session["user_id"] = user["id"]
             session["username"] = user["username"]
             return redirect(url_for("view_reservations"))
-        return "Invalid credentials, try again!"
+        return render_template("wrong_password.html")
 
     return render_template("signin.html")
 

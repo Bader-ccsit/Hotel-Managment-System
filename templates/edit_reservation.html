@@ -58,9 +58,9 @@
                 <label>Number of Guests:</label>
                 <input type="number" name="guests" value="{{ reservation[3] }}" required min="1" max="5"><br>
                 <label>Start Date:</label>
-                <input type="date" name="start_date" value="{{ reservation[4] }}" required><br>
+                <input type="date" name="start_date" value="{{ reservation[4] }}" required min="{{ current_date }}"><br>
                 <label>End Date:</label>
-                <input type="date" name="end_date" value="{{ reservation[5] }}" required><br>
+                <input type="date" name="end_date" value="{{ reservation[5] }}" required min="{{ current_date }}"><br>
                 <button type="submit">Save Changes</button>
             </form>
         </span>
